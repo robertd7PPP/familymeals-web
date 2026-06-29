@@ -246,6 +246,17 @@
     .roulette-result b { color: var(--navy); }
     .spin-btn { background: var(--amber); color: #2D1F08; border: none; border-radius: var(--r-full); padding: 9px 26px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
 
+    /* ── Multiple devices (invite + members) ── */
+    .invite-card { background: var(--navy); color: white; border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
+    .invite-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
+    .invite-code { font-family: ui-monospace, monospace; font-size: 19px; font-weight: 800; letter-spacing: 0.14em; margin-top: 4px; }
+    .invite-share { display: inline-block; margin-top: 9px; background: rgba(255,255,255,0.22); border-radius: var(--r-full); padding: 4px 12px; font-size: 11px; font-weight: 700; }
+    .member-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 4px 0 7px; }
+    .member-row { display: flex; align-items: center; gap: 9px; background: white; border-radius: var(--r-md); padding: 8px 10px; margin-bottom: 6px; box-shadow: var(--shadow); }
+    .member-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); }
+    .member-tag { font-size: 10px; font-weight: 700; color: var(--success); background: var(--success-bg); padding: 2px 8px; border-radius: var(--r-full); }
+    .member-tag.shared { color: var(--navy); background: var(--navy-light); }
+
     /* ── Section common ── */
     section { border-top: 1px solid var(--border-lt); }
     .section-inner { max-width: 1100px; margin: 0 auto; padding: 52px 20px; }
@@ -399,7 +410,7 @@
       </div>
       <a href="#how" class="btn-secondary-link">See how it works →</a>
     </div>
-    <div class="trust-line">No ads. Your household's data stays in your household. Free to start.</div>
+    <div class="trust-line">Everyone joins on their own device with a code. No ads. Free to start.</div>
   </div>
 
   <div class="hero-phones">
@@ -531,30 +542,71 @@
       </div>
       <div class="step">
         <div class="step-n">02</div>
-        <h3>Vote together</h3>
-        <p>Start a vote and let everyone rank the meals they want this week — standings update live.</p>
+        <h3>Get everyone on board</h3>
+        <p>Share an invite code so each member joins on their own phone — or set up one shared household tablet.</p>
       </div>
       <div class="step">
         <div class="step-n">03</div>
+        <h3>Vote together</h3>
+        <p>Start a vote and let everyone rank the meals they want this week — standings update live across devices.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
         <h3>Plan the week</h3>
         <p>Drop the winning meals onto the 7-day plan and assign who's cooking each night.</p>
       </div>
       <div class="step">
-        <div class="step-n">04</div>
-        <h3>Shop from one list</h3>
-        <p>The plan's ingredients become a shared shopping list. Tick items off as you go.</p>
-      </div>
-      <div class="step">
         <div class="step-n">05</div>
-        <h3>Spin to decide</h3>
-        <p>Stuck? Use roulette for takeaway nights or any "you choose" moment.</p>
+        <h3>Shop &amp; decide</h3>
+        <p>The plan's ingredients become a shared shopping list — and roulette settles the nights no one can decide.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════ -->
-<!-- 6a. FEATURE: WEEKLY PLAN                                      -->
+<!-- 6a. FEATURE: MULTIPLE DEVICES                                 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec" id="devices">
+  <div class="section-inner">
+    <div class="feature-row flip">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Multiple devices</div>
+        <h2>Everyone's in — on their own device.</h2>
+        <p>FamilyMeals works best when the whole household takes part. Share one invite code and each member joins on their own phone — or set up a shared tablet that everyone picks their name on. From there anyone can add meal ideas, vote, see the weekly plan and check the shopping list, all kept in sync.</p>
+        <ul>
+          <li><span class="check">✓</span> Share a single invite code</li>
+          <li><span class="check">✓</span> Each member joins on their own phone</li>
+          <li><span class="check">✓</span> Or use one shared household tablet</li>
+          <li><span class="check">✓</span> Everything stays in sync, live</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Household</span><span class="app-header-ico">⤴</span></div>
+            <div class="app-body">
+              <div class="invite-card">
+                <div class="invite-label">Invite code</div>
+                <div class="invite-code">7K4P-2QXM</div>
+                <span class="invite-share">Share code ↗</span>
+              </div>
+              <div class="member-label">Members</div>
+              <div class="member-row"><span class="cook" style="background:#3574E8">A</span><span class="member-name">Alex</span><span class="member-tag">Joined</span></div>
+              <div class="member-row"><span class="cook" style="background:#F26B5B">K</span><span class="member-name">Kai</span><span class="member-tag">Joined</span></div>
+              <div class="member-row"><span class="cook" style="background:#2ABFBF">B</span><span class="member-name">Bron</span><span class="member-tag">Joined</span></div>
+              <div class="member-row"><span class="cook" style="background:#F5A623">J</span><span class="member-name">Jamie</span><span class="member-tag shared">Tablet</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6b. FEATURE: WEEKLY PLAN                                      -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <section class="feature-sec alt" id="plan">
   <div class="section-inner">
