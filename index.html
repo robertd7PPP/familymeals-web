@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- TODO before launch:                                           -->
+  <!--  • Domain: replace www.familymeals.co.nz everywhere once set  -->
+  <!--  • Store links: replace the two "#TODO-store" hrefs + JSON-LD -->
+  <!--    sameAs with the real App Store + Google Play URLs          -->
+  <!--  • Screenshots: swap the CSS phone mockups for real images    -->
+  <!--  • Pricing: confirm "free to start / optional plan" wording   -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+
+  <title>FamilyMeals: Meal Planner | Dinner votes &amp; shopping list</title>
+  <meta name="description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list. For families, couples and flatmates." />
+  <meta name="keywords" content="household, family, flatmates, couples, groceries, recipes, menu, cooking, weekly, ingredients, food" />
+  <meta property="og:title" content="FamilyMeals — Dinner votes &amp; shopping list" />
+  <meta property="og:description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.familymeals.co.nz/app-icon.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:url" content="https://www.familymeals.co.nz" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="FamilyMeals — Dinner votes &amp; shopping list" />
+  <meta name="twitter:description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list." />
+  <meta name="twitter:image" content="https://www.familymeals.co.nz/app-icon.png" />
+  <link rel="icon" href="app-icon-small.png" />
+  <link rel="canonical" href="https://www.familymeals.co.nz/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.familymeals.co.nz/#organization",
+        "name": "FamilyMeals",
+        "url": "https://www.familymeals.co.nz/",
+        "logo": "https://www.familymeals.co.nz/app-icon.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.familymeals.co.nz/#website",
+        "url": "https://www.familymeals.co.nz/",
+        "name": "FamilyMeals",
+        "publisher": { "@id": "https://www.familymeals.co.nz/#organization" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://www.familymeals.co.nz/#app",
+        "name": "FamilyMeals: Meal Planner",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "LifestyleApplication",
+        "description": "Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list.",
+        "url": "https://www.familymeals.co.nz/",
+        "publisher": { "@id": "https://www.familymeals.co.nz/#organization" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.familymeals.co.nz/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is FamilyMeals for?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Anyone who shares meals — families, couples, flatmates, roommates or any household that shares a kitchen. FamilyMeals uses neutral 'household' and 'member' language, so it works however your household is made up." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does voting work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Anyone can start a vote by choosing meals from your library. Each member ranks their top three (3, 2 and 1 points). Standings update live across everyone's devices, and the winning meals get added to the week's plan." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where does the shopping list come from?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It builds itself from the plan. The ingredients linked to the dinners you've planned flow into one shared shopping list, so you shop from a single list instead of starting again each week. You can add manual items too." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the whole household take part?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Plan together across the household's devices — everyone can add meal ideas, vote, see the weekly plan and know who is cooking." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the roulette for?",
+            "acceptedAnswer": { "@type": "Answer", "text": "For nights when no one can decide. Create a scenario such as 'Takeaway tonight?', add your options, and spin the wheel for a random pick. Spin history is kept." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is FamilyMeals free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "FamilyMeals is free to start, with an optional plan for households that want more." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #3574E8;
+      --navy-dark:   #2257B5;
+      --navy-light:  #EAF1FE;
+      --amber:       #F5A623;
+      --amber-light: #FEF3C7;
+      --teal:        #2ABFBF;
+      --teal-light:  #C6DDDF;
+      --coral:       #F26B5B;
+      --success:     #15803D;
+      --success-bg:  #DCFCE7;
+      --warning:     #B45309;
+      --warning-bg:  #FEF3C7;
+      --danger:      #B91C1C;
+      --danger-bg:   #FEE2E2;
+      --bg:          #EEF1F6;   /* light slate page / alt sections */
+      --app-bg:      #C8D2DE;   /* true in-app slate-blue (phone interiors) */
+      --card:        #FFFFFF;
+      --text:        #1A1F30;
+      --text-sec:    #586273;
+      --text-muted:  #8A93A4;
+      --border:      #D7DEE7;
+      --border-lt:   #E7ECF2;
+      --shadow:      0 1px 4px rgba(20,32,50,0.06);
+      --shadow-md:   0 4px 16px rgba(20,32,50,0.10);
+      --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-text-size-adjust: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-brand span b { color: var(--navy); }
+    .nav-links { display: none; }
+    .nav-cta {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--navy); color: white;
+      padding: 9px 16px; border-radius: var(--r-md);
+      font-size: 14px; font-weight: 600;
+    }
+
+    /* ── Hero ── */
+    .hero { max-width: 1100px; margin: 0 auto; padding: 48px 20px 52px; text-align: center; }
+    .hero-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--navy); background: var(--navy-light); padding: 5px 12px; border-radius: var(--r-full); display: inline-block; margin-bottom: 18px; text-transform: uppercase; }
+    .hero h1 { font-size: 32px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .hero h1 em { color: var(--navy); font-style: normal; }
+    .hero p { font-size: 16px; color: var(--text-sec); line-height: 1.65; margin-bottom: 24px; }
+    .cta-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+    .badge-row { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
+    .badge-row a { display: inline-block; line-height: 0; }
+    .badge-row img { height: 40px; width: auto; display: block; }
+    .btn-secondary-link { font-size: 15px; font-weight: 600; color: var(--navy); }
+    .trust-line { font-size: 13px; color: var(--text-muted); line-height: 1.5; max-width: 340px; margin: 0 auto 8px; }
+    .hero-phones { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-top: 40px; }
+
+    /* ── Phone shell ── */
+    .phone {
+      width: 240px; background: #1A1F30; border-radius: 40px;
+      padding: 9px;
+      box-shadow: 0 32px 64px rgba(20,32,50,0.22), 0 0 0 1px rgba(0,0,0,0.3);
+    }
+    .phone-inner { background: var(--app-bg); border-radius: 33px; overflow: hidden; height: 500px; display: flex; flex-direction: column; }
+    .phone-notch { height: 26px; background: #1A1F30; display: flex; align-items: center; justify-content: center; }
+    .phone-notch-pill { width: 80px; height: 9px; background: #0d0f17; border-radius: 999px; }
+
+    /* ── In-app mockup UI ── */
+    .app-status { display: flex; justify-content: space-between; align-items: center; padding: 6px 16px 0; font-size: 11px; font-weight: 600; color: var(--text); }
+    .app-status-dots { display: flex; gap: 4px; }
+    .app-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 8px; }
+    .app-title { font-size: 16px; font-weight: 700; color: var(--text); }
+    .app-header-ico { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-light); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 12px; font-weight: 700; }
+    .app-body { flex: 1; overflow: hidden; padding: 4px 12px 12px; display: flex; flex-direction: column; text-align: left; }
+
+    /* mini phone (feature sections) */
+    .mini-phone { width: 220px; background: #1A1F30; border-radius: 32px; padding: 8px; box-shadow: 0 20px 40px rgba(20,32,50,0.18), 0 0 0 1px rgba(0,0,0,0.25); margin: 0 auto; }
+    .mini-inner { background: var(--app-bg); border-radius: 26px; overflow: hidden; height: 420px; display: flex; flex-direction: column; }
+    .mini-notch { height: 20px; background: #1A1F30; display: flex; align-items: center; justify-content: center; }
+    .mini-notch-pill { width: 60px; height: 7px; background: #0d0f17; border-radius: 999px; }
+
+    /* ── Plan day cards ── */
+    .day-card { background: white; border-radius: var(--r-md); border-left: 3px solid var(--navy); padding: 9px 11px; margin-bottom: 7px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .day-card.empty { border-left-color: var(--border); }
+    .day-meta { min-width: 0; }
+    .day-when { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .day-meal { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .day-meal.muted { color: var(--text-muted); font-weight: 500; font-style: italic; }
+    .day-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+    .diff { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: var(--r-full); text-transform: uppercase; letter-spacing: 0.02em; }
+    .diff-easy { background: var(--success-bg); color: var(--success); }
+    .diff-med  { background: var(--warning-bg); color: var(--warning); }
+    .diff-hard { background: var(--danger-bg); color: var(--danger); }
+    .cook { width: 24px; height: 24px; border-radius: 50%; color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* ── Voting ── */
+    .vote-slot { display: flex; align-items: center; gap: 9px; background: white; border-radius: var(--r-md); padding: 8px 10px; margin-bottom: 6px; box-shadow: var(--shadow); }
+    .rank-badge { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: white; flex-shrink: 0; }
+    .rank-1 { background: var(--amber); }
+    .rank-2 { background: var(--teal); }
+    .rank-3 { background: var(--coral); }
+    .vote-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); }
+    .vote-score { font-size: 11px; font-weight: 700; color: var(--text-sec); font-variant-numeric: tabular-nums; }
+    .vote-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 8px 0 6px; }
+    .pool { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pool-chip { background: var(--navy-light); color: var(--navy); border-radius: var(--r-full); padding: 5px 10px; font-size: 11px; font-weight: 600; }
+    .vote-cta { margin-top: auto; background: var(--amber); color: #2D1F08; border: none; border-radius: var(--r-md); padding: 10px; font-size: 12px; font-weight: 700; text-align: center; }
+
+    /* ── Shopping list ── */
+    .shop-group { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 10px 0 4px; }
+    .shop-group:first-child { margin-top: 0; }
+    .shop-item { display: flex; align-items: center; gap: 9px; padding: 7px 0; border-bottom: 1px solid var(--border-lt); }
+    .ckbox { width: 17px; height: 17px; border-radius: 5px; border: 1.6px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white; }
+    .ckbox.on { background: var(--navy); border-color: var(--navy); color: white; font-size: 11px; font-weight: 800; }
+    .shop-name { font-size: 12px; font-weight: 500; color: var(--text); }
+    .shop-item.done .shop-name { color: var(--text-muted); text-decoration: line-through; }
+
+    /* ── Meals library ── */
+    .meal-card { background: white; border-radius: var(--r-md); padding: 9px 11px; margin-bottom: 7px; box-shadow: var(--shadow); }
+    .meal-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .meal-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .meal-star { color: var(--amber); font-size: 13px; }
+    .meal-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .meal-stat { font-size: 10px; color: var(--text-sec); font-weight: 600; display: inline-flex; align-items: center; gap: 3px; }
+
+    /* ── Roulette ── */
+    .roulette-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 14px; }
+    .wheel-stage { position: relative; width: 168px; height: 168px; }
+    .wheel { width: 168px; height: 168px; border-radius: 50%; box-shadow: 0 6px 18px rgba(20,32,50,0.22), inset 0 0 0 6px rgba(255,255,255,0.85);
+      background: conic-gradient(var(--navy) 0 60deg, var(--amber) 60deg 120deg, var(--teal) 120deg 180deg, var(--coral) 180deg 240deg, #8B5CF6 240deg 300deg, var(--success) 300deg 360deg); }
+    .wheel-hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; border-radius: 50%; background: white; box-shadow: 0 2px 8px rgba(20,32,50,0.25); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--navy); letter-spacing: 0.04em; }
+    .wheel-pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 14px solid var(--text); z-index: 2; }
+    .roulette-result { background: white; border-radius: var(--r-md); padding: 9px 14px; box-shadow: var(--shadow); font-size: 12px; font-weight: 600; color: var(--text); }
+    .roulette-result b { color: var(--navy); }
+    .spin-btn { background: var(--amber); color: #2D1F08; border: none; border-radius: var(--r-full); padding: 9px 26px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+
+    /* ── Section common ── */
+    section { border-top: 1px solid var(--border-lt); }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 52px 20px; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--navy); text-transform: uppercase; margin-bottom: 12px; }
+    .section-h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
+    .section-lede { font-size: 16px; color: var(--text-sec); line-height: 1.65; max-width: 620px; }
+
+    /* ── Trust strip ── */
+    .trust-strip { background: white; }
+    .trust-strip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .trust-strip-card { background: var(--bg); border: 1px solid var(--border-lt); border-radius: var(--r-lg); padding: 16px; }
+    .trust-strip-card svg { width: 22px; height: 22px; color: var(--navy); margin-bottom: 8px; }
+    .trust-strip-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .trust-strip-card p { font-size: 13px; color: var(--text-sec); line-height: 1.45; }
+
+    /* ── Problem ── */
+    .problem { background: var(--bg); }
+    .problem .section-h2 { margin-bottom: 16px; }
+    .problem p { font-size: 16px; color: var(--text-sec); line-height: 1.65; margin-bottom: 16px; max-width: 640px; }
+    .problem p.bold { font-weight: 600; color: var(--text); }
+    .problem ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 8px; max-width: 640px; }
+    .problem ul li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); }
+    .problem ul li .check { color: var(--navy); font-weight: 700; flex-shrink: 0; }
+
+    /* ── How it works ── */
+    .how { background: var(--navy-light); }
+    .steps { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .step { background: white; border-radius: var(--r-lg); padding: 20px; box-shadow: var(--shadow); }
+    .step-n { font-family: ui-monospace, monospace; font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .step p { font-size: 14px; color: var(--text-sec); line-height: 1.55; }
+
+    /* ── Feature sections ── */
+    .feature-sec { background: white; }
+    .feature-sec.alt { background: var(--bg); }
+    .feature-row { display: flex; flex-direction: column; gap: 28px; align-items: center; }
+    .feature-text { width: 100%; }
+    .feature-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--navy); text-transform: uppercase; margin-bottom: 12px; }
+    .feature-text h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+    .feature-text p { font-size: 15px; color: var(--text-sec); line-height: 1.65; margin-bottom: 14px; max-width: 540px; }
+    .feature-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .feature-text ul li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); }
+    .feature-text ul li .check { color: var(--navy); flex-shrink: 0; }
+    .feature-visual { display: flex; justify-content: center; align-items: center; }
+
+    /* ── FAQ ── */
+    .faq { background: var(--bg); }
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-list details { background: white; border: 1px solid var(--border); border-radius: var(--r-md); padding: 14px 16px; }
+    .faq-list details[open] { border-color: var(--navy); }
+    .faq-list summary { font-size: 15px; font-weight: 600; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; font-size: 22px; font-weight: 400; color: var(--text-muted); flex-shrink: 0; line-height: 1; }
+    .faq-list details[open] summary::after { content: "−"; color: var(--navy); }
+    .faq-list details p { font-size: 14px; color: var(--text-sec); line-height: 1.6; margin-top: 10px; }
+
+    /* ── Footer CTA ── */
+    .footer-cta { background: white; text-align: center; }
+    .footer-cta h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+    .footer-cta p { font-size: 15px; color: var(--text-sec); margin: 0 auto 20px; line-height: 1.55; max-width: 520px; }
+    .footer-cta .cta-row { margin-bottom: 12px; }
+
+    /* ── Footer ── */
+    footer { background: var(--text); color: rgba(255,255,255,0.6); padding: 40px 20px 28px; font-size: 13px; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 28px; }
+    .footer-col h5 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .footer-col p { line-height: 1.55; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { color: rgba(255,255,255,0.65); }
+    .footer-col ul a:hover { color: white; }
+    .footer-legal { max-width: 1100px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+    .check { color: var(--success); font-weight: 700; flex-shrink: 0; }
+
+    /* ── Tablet: 600px+ ── */
+    @media (min-width: 600px) {
+      .trust-strip-grid { grid-template-columns: repeat(4, 1fr); }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 2fr 1fr 1.5fr; gap: 40px; }
+      .section-h2 { font-size: 30px; }
+      .hero h1 { font-size: 38px; }
+    }
+
+    /* ── Desktop: 900px+ ── */
+    @media (min-width: 900px) {
+      nav { padding: 0 32px; height: 60px; }
+      .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--text-sec); }
+      .nav-links a:hover { color: var(--text); }
+
+      .hero { padding: 72px 32px 80px; display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; text-align: left; }
+      .hero > div:first-child { max-width: 560px; }
+      .hero h1 { font-size: 46px; letter-spacing: -0.03em; }
+      .hero p { font-size: 17px; }
+      .cta-row { justify-content: flex-start; }
+      .trust-line { margin: 0 0 8px; max-width: none; }
+      .hero-phones { flex-direction: row; gap: 20px; align-items: flex-start; margin-top: 0; }
+      .phone { flex-shrink: 0; }
+      .phone-inner { height: 480px; }
+
+      .section-inner { padding: 72px 32px; }
+      .section-h2 { font-size: 34px; margin-bottom: 24px; }
+      .problem .section-h2 { font-size: 38px; margin-bottom: 18px; }
+      .problem p { font-size: 17px; }
+
+      .steps { grid-template-columns: repeat(5, 1fr); gap: 18px; }
+
+      .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+      .feature-row.flip { direction: rtl; }
+      .feature-row.flip > * { direction: ltr; }
+      .feature-text h2 { font-size: 28px; }
+      .feature-text p { font-size: 16px; }
+      .feature-text ul li { font-size: 15px; }
+
+      .mini-phone { width: 240px; }
+      .mini-inner { height: 460px; }
+
+      .footer-cta h2 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 1. NAV                                                       -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-brand">
+    <img src="app-icon-small.png" alt="FamilyMeals icon" />
+    <span>Family<b>Meals</b></span>
+  </div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#get" class="nav-cta">Get the app →</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 2. HERO                                                      -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div>
+    <div class="hero-tag">Meal planner for the whole household</div>
+    <h1>Dinner planning, <em>made together.</em></h1>
+    <p>Plan dinners together across the household. Vote on meals, assign the cook, and turn the week's dinners into a shared shopping list — for families, couples and flatmates alike.</p>
+    <div class="cta-row">
+      <!-- TODO-store: replace # with real App Store + Google Play URLs -->
+      <div class="badge-row">
+        <a href="#" id="store-ios"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
+        <a href="#" id="store-android"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
+      </div>
+      <a href="#how" class="btn-secondary-link">See how it works →</a>
+    </div>
+    <div class="trust-line">No ads. Your household's data stays in your household. Free to start.</div>
+  </div>
+
+  <div class="hero-phones">
+    <!-- Phone 1: Weekly Plan ─────────────────────────────────────── -->
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+        <div class="app-status"><span>9:41</span><div class="app-status-dots"><span>📶</span><span>🔋</span></div></div>
+        <div class="app-header">
+          <span class="app-title">Meal Plan</span>
+          <span class="app-header-ico">＋</span>
+        </div>
+        <div class="app-body">
+          <div class="day-card">
+            <div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div>
+            <div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#3574E8">A</span></div>
+          </div>
+          <div class="day-card">
+            <div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div>
+            <div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#F26B5B">K</span></div>
+          </div>
+          <div class="day-card">
+            <div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div>
+            <div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#2ABFBF">B</span></div>
+          </div>
+          <div class="day-card empty">
+            <div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal muted">No meal planned</div></div>
+            <div class="day-right"><span class="cook" style="background:#D7DEE7;color:#8A93A4">?</span></div>
+          </div>
+          <div class="day-card">
+            <div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div>
+            <div class="day-right"><span class="diff diff-hard">Hard</span><span class="cook" style="background:#F5A623">J</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 2: Voting ──────────────────────────────────────────── -->
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+        <div class="app-status"><span>9:41</span><div class="app-status-dots"><span>📶</span><span>🔋</span></div></div>
+        <div class="app-header">
+          <span class="app-title">Voting</span>
+          <span class="app-header-ico">●</span>
+        </div>
+        <div class="app-body">
+          <div class="vote-label">Live standings</div>
+          <div class="vote-slot"><span class="rank-badge rank-1">1</span><span class="vote-name">Homemade Pizza</span><span class="vote-score">8 pts</span></div>
+          <div class="vote-slot"><span class="rank-badge rank-2">2</span><span class="vote-name">Chicken Stir-fry</span><span class="vote-score">6 pts</span></div>
+          <div class="vote-slot"><span class="rank-badge rank-3">3</span><span class="vote-name">Fish Tacos</span><span class="vote-score">4 pts</span></div>
+          <div class="vote-label">In the running</div>
+          <div class="pool">
+            <span class="pool-chip">Butter Chicken</span>
+            <span class="pool-chip">Nachos</span>
+            <span class="pool-chip">Lasagne</span>
+            <span class="pool-chip">Pad Thai</span>
+            <span class="pool-chip">Roast Veg</span>
+          </div>
+          <div class="vote-cta">Lock &amp; assign meals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 3. TRUST / VALUE STRIP                                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="trust-strip">
+  <div class="section-inner">
+    <div class="trust-strip-grid">
+      <div class="trust-strip-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/></svg>
+        <h3>Plan the week together</h3>
+        <p>One rolling 7-day dinner plan the whole household can see.</p>
+      </div>
+      <div class="trust-strip-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <h3>Everyone gets a vote</h3>
+        <p>Members rank their top dinners, live across devices.</p>
+      </div>
+      <div class="trust-strip-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <h3>Shopping list builds itself</h3>
+        <p>Ingredients from the plan flow into one shared list.</p>
+      </div>
+      <div class="trust-strip-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <h3>Know who's cooking</h3>
+        <p>Assign each dinner so responsibilities are clear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 4. PROBLEM                                                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="section-tag">The everyday problem</div>
+    <h2 class="section-h2">Still deciding "what's for dinner?" every night?</h2>
+    <p>Someone has to think of a meal, check what everyone feels like, work out who's cooking, and remember what to buy — every single day. It's a small decision that quietly eats up the week.</p>
+    <p class="bold">FamilyMeals gives your household one shared place to decide together — and the shopping list builds itself.</p>
+    <ul>
+      <li><span class="check">✓</span> Save the meals your household actually eats</li>
+      <li><span class="check">✓</span> Vote on the week's dinners together</li>
+      <li><span class="check">✓</span> See the 7-day plan and who's cooking</li>
+      <li><span class="check">✓</span> Shop from one list, built from the plan</li>
+      <li><span class="check">✓</span> Spin the roulette when no one can decide</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 5. HOW IT WORKS                                              -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-h2">From "what's for dinner?" to a sorted week.</h2>
+    <p class="section-lede" style="margin-bottom:28px;">Build a library of meals once, then plan each week together in minutes — voting, the plan and the shopping list all stay in sync.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h3>Save your meals</h3>
+        <p>Add the dinners your household actually eats, with their ingredients, into a reusable library.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h3>Vote together</h3>
+        <p>Start a vote and let everyone rank the meals they want this week — standings update live.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h3>Plan the week</h3>
+        <p>Drop the winning meals onto the 7-day plan and assign who's cooking each night.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <h3>Shop from one list</h3>
+        <p>The plan's ingredients become a shared shopping list. Tick items off as you go.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">05</div>
+        <h3>Spin to decide</h3>
+        <p>Stuck? Use roulette for takeaway nights or any "you choose" moment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6a. FEATURE: WEEKLY PLAN                                      -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec alt" id="plan">
+  <div class="section-inner">
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Weekly Plan</div>
+        <h2>Dinner planning for the household.</h2>
+        <p>A rolling seven-day dinner schedule everyone can see. Tap a day to assign a meal, set the difficulty at a glance, and show who's cooking — so the whole household knows what's happening tonight.</p>
+        <ul>
+          <li><span class="check">✓</span> See the week's dinners at a glance</li>
+          <li><span class="check">✓</span> Assign who's cooking each night</li>
+          <li><span class="check">✓</span> Swap meals between days in a tap</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Meal Plan</span><span class="app-header-ico">＋</span></div>
+            <div class="app-body">
+              <div class="day-card"><div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div><div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#3574E8">A</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div><div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#F26B5B">K</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div><div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#2ABFBF">B</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal">Butter Chicken</div></div><div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#8B5CF6">M</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div><div class="day-right"><span class="diff diff-hard">Hard</span><span class="cook" style="background:#F5A623">J</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6b. FEATURE: VOTING                                          -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec" id="voting">
+  <div class="section-inner">
+    <div class="feature-row flip">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Voting</div>
+        <h2>Everyone gets a vote.</h2>
+        <p>Pick the meals your household wants this week. Anyone can start a vote; each member ranks their top three, and the standings update live across everyone's devices. Lock it in and the winners drop onto the plan.</p>
+        <ul>
+          <li><span class="check">✓</span> Each member ranks their top three</li>
+          <li><span class="check">✓</span> Live results across devices</li>
+          <li><span class="check">✓</span> Lock in the winners and assign them</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Voting</span><span class="app-header-ico">●</span></div>
+            <div class="app-body">
+              <div class="vote-label">Live standings</div>
+              <div class="vote-slot"><span class="rank-badge rank-1">1</span><span class="vote-name">Homemade Pizza</span><span class="vote-score">8 pts</span></div>
+              <div class="vote-slot"><span class="rank-badge rank-2">2</span><span class="vote-name">Chicken Stir-fry</span><span class="vote-score">6 pts</span></div>
+              <div class="vote-slot"><span class="rank-badge rank-3">3</span><span class="vote-name">Fish Tacos</span><span class="vote-score">4 pts</span></div>
+              <div class="vote-label">In the running</div>
+              <div class="pool"><span class="pool-chip">Butter Chicken</span><span class="pool-chip">Nachos</span><span class="pool-chip">Lasagne</span><span class="pool-chip">Pad Thai</span></div>
+              <div class="vote-cta">Lock &amp; assign meals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6c. FEATURE: SHOPPING LIST                                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec alt" id="shopping">
+  <div class="section-inner">
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Shopping List</div>
+        <h2>Shopping list built from the plan.</h2>
+        <p>Ingredients from the dinners you've selected flow into one shared shopping list — so you shop from a single list instead of starting again each week. Add your own extras, and tick items off as you go.</p>
+        <ul>
+          <li><span class="check">✓</span> Auto-built from the week's meals</li>
+          <li><span class="check">✓</span> Add manual items too</li>
+          <li><span class="check">✓</span> Tick off and share the list</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Shopping</span><span class="app-header-ico">⤴</span></div>
+            <div class="app-body">
+              <div class="shop-group">Produce</div>
+              <div class="shop-item done"><span class="ckbox on">✓</span><span class="shop-name">Tomatoes</span></div>
+              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Onions</span></div>
+              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Capsicum</span></div>
+              <div class="shop-group">Meat</div>
+              <div class="shop-item done"><span class="ckbox on">✓</span><span class="shop-name">Beef mince</span></div>
+              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Chicken thighs</span></div>
+              <div class="shop-group">Pantry</div>
+              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Spaghetti</span></div>
+              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Tortillas</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6d. FEATURE: MEALS LIBRARY                                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec" id="meals">
+  <div class="section-inner">
+    <div class="feature-row flip">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Meals</div>
+        <h2>Save the meals you actually eat.</h2>
+        <p>Build a reusable library of household favourites. Add a meal once with its ingredients, mark the difficulty, and reuse it whenever it's planned — no more starting from a blank page each week.</p>
+        <ul>
+          <li><span class="check">✓</span> Reusable library of favourites</li>
+          <li><span class="check">✓</span> Add ingredients once, reuse every time</li>
+          <li><span class="check">✓</span> Easy / Medium / Hard at a glance</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Meals</span><span class="app-header-ico">＋</span></div>
+            <div class="app-body">
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Homemade Pizza</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="diff diff-hard">Hard</span><span class="meal-stat">🍽 eaten 6×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Spaghetti Bolognese</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="diff diff-easy">Easy</span><span class="meal-stat">🍽 eaten 9×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Chicken Stir-fry</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="diff diff-med">Med</span><span class="meal-stat">🍽 eaten 4×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Fish Tacos</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="diff diff-easy">Easy</span><span class="meal-stat">🍽 eaten 3×</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6e. FEATURE: TRACK & DECIDE (ranking + roulette)             -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="feature-sec alt" id="decide">
+  <div class="section-inner">
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Track &amp; decide</div>
+        <h2>See what gets picked — or spin for it.</h2>
+        <p>Over time, FamilyMeals shows which dinners win the votes, how often each meal gets eaten, and who's cooked it before. And for the nights no one can decide, spin the roulette to settle takeaway or any other call.</p>
+        <ul>
+          <li><span class="check">✓</span> Track vote scores and times eaten</li>
+          <li><span class="check">✓</span> See who's cooked each meal</li>
+          <li><span class="check">✓</span> Roulette for "you decide" nights</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <div class="mini-phone">
+          <div class="mini-inner">
+            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
+            <div class="app-header"><span class="app-title">Roulette</span><span class="app-header-ico">↻</span></div>
+            <div class="app-body">
+              <div class="roulette-wrap">
+                <div class="wheel-stage">
+                  <div class="wheel-pointer"></div>
+                  <div class="wheel"></div>
+                  <div class="wheel-hub">SPIN</div>
+                </div>
+                <div class="roulette-result">Tonight: <b>Burgers 🍔</b></div>
+                <button class="spin-btn">Spin</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 7. FAQ                                                       -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-h2">Meal planning, answered</h2>
+    <div class="faq-list" style="margin-top:24px;">
+      <details>
+        <summary>Who is FamilyMeals for?</summary>
+        <p>Anyone who shares meals — families, couples, flatmates, roommates or any household that shares a kitchen. FamilyMeals uses neutral "household" and "member" language, so it works however your household is made up.</p>
+      </details>
+      <details>
+        <summary>How does voting work?</summary>
+        <p>Anyone can start a vote by choosing meals from your library. Each member ranks their top three (3, 2 and 1 points). Standings update live across everyone's devices, and the winning meals get added to the week's plan.</p>
+      </details>
+      <details>
+        <summary>Where does the shopping list come from?</summary>
+        <p>It builds itself from the plan. The ingredients linked to the dinners you've planned flow into one shared shopping list, so you shop from a single list instead of starting again each week. You can add manual items too.</p>
+      </details>
+      <details>
+        <summary>Can the whole household take part?</summary>
+        <p>Yes. Plan together across the household's devices — everyone can add meal ideas, vote, see the weekly plan and know who's cooking.</p>
+      </details>
+      <details>
+        <summary>What is the roulette for?</summary>
+        <p>For nights when no one can decide. Create a scenario such as "Takeaway tonight?", add your options, and spin the wheel for a random pick. Spin history is kept.</p>
+      </details>
+      <details>
+        <summary>Is FamilyMeals free?</summary>
+        <p>FamilyMeals is free to start, with an optional plan for households that want more.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 8. FINAL CTA                                                 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="footer-cta" id="get">
+  <div class="section-inner">
+    <h2>Everyone votes. The week gets planned.</h2>
+    <p>The shopping list builds itself. Plan dinners together across your household — and stop asking "what's for dinner?" every night.</p>
+    <!-- TODO-store: replace # with real App Store + Google Play URLs -->
+    <div class="cta-row" style="justify-content:center;">
+      <div class="badge-row">
+        <a href="#"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
+        <a href="#"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
+      </div>
+    </div>
+    <div class="trust-line" style="margin: 12px auto 0;">No ads. Free to start.</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 9. FOOTER                                                    -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h5>FamilyMeals</h5>
+      <p>Dinner planning for the whole household — votes, a weekly plan and a shopping list that builds itself.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Links</h5>
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>For every household</h5>
+      <p>Families, couples, flatmates and roommates. No ads. Free to start, with an optional plan.</p>
+    </div>
+  </div>
+  <div class="footer-legal">
+    FamilyMeals helps households plan dinners together, vote on meals, share a shopping list and decide who's cooking.
+  </div>
+</footer>
+
+</body>
+</html>
