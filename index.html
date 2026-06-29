@@ -13,19 +13,19 @@
   <!--  • Pricing: confirm "free to start / optional plan" wording   -->
   <!-- ════════════════════════════════════════════════════════════ -->
 
-  <title>FamilyMeals: Meal Planner | Dinner votes &amp; shopping list</title>
-  <meta name="description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list. For families, couples and flatmates." />
-  <meta name="keywords" content="household, family, flatmates, couples, groceries, recipes, menu, cooking, weekly, ingredients, food" />
-  <meta property="og:title" content="FamilyMeals — Dinner votes &amp; shopping list" />
-  <meta property="og:description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list." />
+  <title>FamilyMeals | Family Meal Planner &amp; Shared Shopping List App</title>
+  <meta name="description" content="FamilyMeals is a family meal planner app for the whole household. Vote on dinners, plan the week, assign the cook and build one shared shopping list. For families, couples and flatmates." />
+  <meta name="keywords" content="family meal planner app, weekly dinner planner, shared meal planner, household meal planner, meal voting app, shared shopping list app, grocery list, dinner planner" />
+  <meta property="og:title" content="FamilyMeals — Family meal planner &amp; shared shopping list" />
+  <meta property="og:description" content="A shared dinner planner for households. Vote on meals, plan the week, assign the cook and build one shopping list from the dinners selected." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.familymeals.co.nz/app-icon.png" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="1024" />
   <meta property="og:url" content="https://www.familymeals.co.nz" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="FamilyMeals — Dinner votes &amp; shopping list" />
-  <meta name="twitter:description" content="Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list." />
+  <meta name="twitter:title" content="FamilyMeals — Family meal planner &amp; shared shopping list" />
+  <meta name="twitter:description" content="A shared dinner planner for households. Vote on meals, plan the week, assign the cook and build one shopping list from the dinners selected." />
   <meta name="twitter:image" content="https://www.familymeals.co.nz/app-icon.png" />
   <link rel="icon" href="app-icon-small.png" />
   <link rel="canonical" href="https://www.familymeals.co.nz/" />
@@ -51,10 +51,10 @@
       {
         "@type": "MobileApplication",
         "@id": "https://www.familymeals.co.nz/#app",
-        "name": "FamilyMeals: Meal Planner",
+        "name": "FamilyMeals: Family Meal Planner",
         "operatingSystem": "iOS, Android",
         "applicationCategory": "LifestyleApplication",
-        "description": "Plan dinners together across the household. Vote on meals, assign the cook and turn the week's dinners into a shared shopping list.",
+        "description": "FamilyMeals is a family meal planner app for the whole household. Vote on dinners, plan the week, assign the cook and build one shared shopping list. For families, couples and flatmates.",
         "url": "https://www.familymeals.co.nz/",
         "publisher": { "@id": "https://www.familymeals.co.nz/#organization" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" }
@@ -113,10 +113,6 @@
       --coral:       #F26B5B;
       --success:     #15803D;
       --success-bg:  #DCFCE7;
-      --warning:     #B45309;
-      --warning-bg:  #FEF3C7;
-      --danger:      #B91C1C;
-      --danger-bg:   #FEE2E2;
       --bg:          #EEF1F6;   /* light slate page / alt sections */
       --app-bg:      #C8D2DE;   /* true in-app slate-blue (phone interiors) */
       --card:        #FFFFFF;
@@ -199,10 +195,6 @@
     .day-meal { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .day-meal.muted { color: var(--text-muted); font-weight: 500; font-style: italic; }
     .day-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
-    .diff { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: var(--r-full); text-transform: uppercase; letter-spacing: 0.02em; }
-    .diff-easy { background: var(--success-bg); color: var(--success); }
-    .diff-med  { background: var(--warning-bg); color: var(--warning); }
-    .diff-hard { background: var(--danger-bg); color: var(--danger); }
     .cook { width: 24px; height: 24px; border-radius: 50%; color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
     /* ── Voting ── */
@@ -302,6 +294,26 @@
     .feature-text ul li .check { color: var(--navy); flex-shrink: 0; }
     .feature-visual { display: flex; justify-content: center; align-items: center; }
 
+    /* ── Differentiation / "not" cards ── */
+    .diff-sec { background: white; }
+    .nots { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 26px; }
+    .not-card { background: var(--bg); border: 1px solid var(--border-lt); border-left: 3px solid var(--navy); border-radius: var(--r-lg); padding: 18px 20px; }
+    .not-card h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .not-card p { font-size: 14px; color: var(--text-sec); line-height: 1.55; }
+
+    /* ── Use cases ── */
+    .usecases { background: var(--navy-light); }
+    .uc-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 26px; }
+    .uc-card { background: white; border-radius: var(--r-lg); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-lt); }
+    .uc-emoji { font-size: 22px; line-height: 1; margin-bottom: 10px; }
+    .uc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .uc-card p { font-size: 14px; color: var(--text-sec); line-height: 1.55; }
+
+    /* ── SEO prose block ── */
+    .seo-prose { background: var(--bg); }
+    .seo-prose p { font-size: 15px; color: var(--text-sec); line-height: 1.7; max-width: 720px; margin-bottom: 14px; }
+    .seo-prose p:last-child { margin-bottom: 0; }
+
     /* ── FAQ ── */
     .faq { background: var(--bg); }
     .faq-list { display: flex; flex-direction: column; gap: 8px; }
@@ -334,6 +346,7 @@
     /* ── Tablet: 600px+ ── */
     @media (min-width: 600px) {
       .trust-strip-grid { grid-template-columns: repeat(4, 1fr); }
+      .uc-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 2fr 1fr 1.5fr; gap: 40px; }
       .section-h2 { font-size: 30px; }
@@ -362,6 +375,8 @@
       .problem p { font-size: 17px; }
 
       .steps { grid-template-columns: repeat(5, 1fr); gap: 18px; }
+      .uc-grid { grid-template-columns: repeat(4, 1fr); }
+      .nots { grid-template-columns: repeat(3, 1fr); }
 
       .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
       .feature-row.flip { direction: rtl; }
@@ -389,6 +404,8 @@
   </div>
   <div class="nav-links">
     <a href="#how">How it works</a>
+    <a href="#why">Why FamilyMeals</a>
+    <a href="#who">Who it's for</a>
     <a href="#faq">FAQ</a>
   </div>
   <a href="#get" class="nav-cta">Get the app →</a>
@@ -399,9 +416,9 @@
 <!-- ════════════════════════════════════════════════════════════ -->
 <div class="hero">
   <div>
-    <div class="hero-tag">Meal planner for the whole household</div>
-    <h1>Dinner planning, <em>made together.</em></h1>
-    <p>Plan dinners together across the household. Vote on meals, assign the cook, and turn the week's dinners into a shared shopping list — for families, couples and flatmates alike.</p>
+    <div class="hero-tag">The dinner planner the whole household has a say in</div>
+    <h1>Dinner, <em>decided together.</em></h1>
+    <p>Everyone votes on the week's dinners, everyone can see whose turn it is to cook, and the shopping list builds itself from the meals you pick. Start from the dinners your household already rotates through — for families, couples and flatmates alike.</p>
     <div class="cta-row">
       <!-- TODO-store: replace # with real App Store + Google Play URLs -->
       <div class="badge-row">
@@ -426,15 +443,15 @@
         <div class="app-body">
           <div class="day-card">
             <div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div>
-            <div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#3574E8">A</span></div>
+            <div class="day-right"><span class="cook" style="background:#3574E8">A</span></div>
           </div>
           <div class="day-card">
             <div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div>
-            <div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#F26B5B">K</span></div>
+            <div class="day-right"><span class="cook" style="background:#F26B5B">K</span></div>
           </div>
           <div class="day-card">
             <div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div>
-            <div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#2ABFBF">B</span></div>
+            <div class="day-right"><span class="cook" style="background:#2ABFBF">B</span></div>
           </div>
           <div class="day-card empty">
             <div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal muted">No meal planned</div></div>
@@ -442,7 +459,7 @@
           </div>
           <div class="day-card">
             <div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div>
-            <div class="day-right"><span class="diff diff-hard">Hard</span><span class="cook" style="background:#F5A623">J</span></div>
+            <div class="day-right"><span class="cook" style="background:#F5A623">J</span></div>
           </div>
         </div>
       </div>
@@ -537,8 +554,8 @@
     <div class="steps">
       <div class="step">
         <div class="step-n">01</div>
-        <h3>Save your meals</h3>
-        <p>Add the dinners your household actually eats, with their ingredients, into a reusable library.</p>
+        <h3>Add your rotation once</h3>
+        <p>Add the dinners your household actually rotates through, with their ingredients. Do it once — they're ready to reuse every week.</p>
       </div>
       <div class="step">
         <div class="step-n">02</div>
@@ -614,7 +631,7 @@
       <div class="feature-text">
         <div class="feature-eyebrow">Weekly Plan</div>
         <h2>Dinner planning for the household.</h2>
-        <p>A rolling seven-day dinner schedule everyone can see. Tap a day to assign a meal, set the difficulty at a glance, and show who's cooking — so the whole household knows what's happening tonight.</p>
+        <p>A rolling seven-day dinner schedule everyone can see. Tap a day to assign a meal and show who's cooking — so the whole household knows what's happening tonight.</p>
         <ul>
           <li><span class="check">✓</span> See the week's dinners at a glance</li>
           <li><span class="check">✓</span> Assign who's cooking each night</li>
@@ -627,11 +644,11 @@
             <div class="mini-notch"><div class="mini-notch-pill"></div></div>
             <div class="app-header"><span class="app-title">Meal Plan</span><span class="app-header-ico">＋</span></div>
             <div class="app-body">
-              <div class="day-card"><div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div><div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#3574E8">A</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div><div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#F26B5B">K</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div><div class="day-right"><span class="diff diff-easy">Easy</span><span class="cook" style="background:#2ABFBF">B</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal">Butter Chicken</div></div><div class="day-right"><span class="diff diff-med">Med</span><span class="cook" style="background:#8B5CF6">M</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div><div class="day-right"><span class="diff diff-hard">Hard</span><span class="cook" style="background:#F5A623">J</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div><div class="day-right"><span class="cook" style="background:#3574E8">A</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div><div class="day-right"><span class="cook" style="background:#F26B5B">K</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div><div class="day-right"><span class="cook" style="background:#2ABFBF">B</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal">Butter Chicken</div></div><div class="day-right"><span class="cook" style="background:#8B5CF6">M</span></div></div>
+              <div class="day-card"><div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div><div class="day-right"><span class="cook" style="background:#F5A623">J</span></div></div>
             </div>
           </div>
         </div>
@@ -725,12 +742,12 @@
     <div class="feature-row flip">
       <div class="feature-text">
         <div class="feature-eyebrow">Meals</div>
-        <h2>Save the meals you actually eat.</h2>
-        <p>Build a reusable library of household favourites. Add a meal once with its ingredients, mark the difficulty, and reuse it whenever it's planned — no more starting from a blank page each week.</p>
+        <h2>Your dinner rotation, not a recipe catalogue.</h2>
+        <p>Most households cook the same 20–30 dinners on rotation. Add yours once — with their ingredients — and reuse them every week. No endless recipe feed to scroll, no blank page to start from.</p>
         <ul>
-          <li><span class="check">✓</span> Reusable library of favourites</li>
+          <li><span class="check">✓</span> Your regulars, all in one place</li>
           <li><span class="check">✓</span> Add ingredients once, reuse every time</li>
-          <li><span class="check">✓</span> Easy / Medium / Hard at a glance</li>
+          <li><span class="check">✓</span> Star your go-to meals for quick picks</li>
         </ul>
       </div>
       <div class="feature-visual">
@@ -739,10 +756,10 @@
             <div class="mini-notch"><div class="mini-notch-pill"></div></div>
             <div class="app-header"><span class="app-title">Meals</span><span class="app-header-ico">＋</span></div>
             <div class="app-body">
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Homemade Pizza</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="diff diff-hard">Hard</span><span class="meal-stat">🍽 eaten 6×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Spaghetti Bolognese</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="diff diff-easy">Easy</span><span class="meal-stat">🍽 eaten 9×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Chicken Stir-fry</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="diff diff-med">Med</span><span class="meal-stat">🍽 eaten 4×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Fish Tacos</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="diff diff-easy">Easy</span><span class="meal-stat">🍽 eaten 3×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Homemade Pizza</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="meal-stat">⭐ 8 pts</span><span class="meal-stat">🍽 eaten 6×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Spaghetti Bolognese</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="meal-stat">⭐ 7 pts</span><span class="meal-stat">🍽 eaten 9×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Chicken Stir-fry</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="meal-stat">⭐ 6 pts</span><span class="meal-stat">🍽 eaten 4×</span></div></div>
+              <div class="meal-card"><div class="meal-top"><span class="meal-name">Fish Tacos</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="meal-stat">⭐ 4 pts</span><span class="meal-stat">🍽 eaten 3×</span></div></div>
             </div>
           </div>
         </div>
@@ -785,6 +802,64 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6f. DIFFERENTIATION: NOT JUST RECIPES                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="diff-sec" id="why">
+  <div class="section-inner">
+    <div class="section-tag">Why FamilyMeals</div>
+    <h2 class="section-h2">Not just recipes. Household dinner coordination.</h2>
+    <p class="section-lede">FamilyMeals isn't a recipe-discovery app. No AI feed, no endless recipes to scroll — on purpose. It's built around the meals your household already knows and eats, so it answers the questions that actually come up each week: what are we eating, who's cooking, what do we need to buy, and what does everyone want?</p>
+    <div class="nots">
+      <div class="not-card">
+        <h3>Not another recipe app</h3>
+        <p>It starts with the dinners your household already rotates through — not a feed of recipes to browse. Add them once, then just decide what to cook this week.</p>
+      </div>
+      <div class="not-card">
+        <h3>Not just a shopping list</h3>
+        <p>Pick the meals, assign the cook, and the list builds itself from the ingredients saved against those dinners.</p>
+      </div>
+      <div class="not-card">
+        <h3>Not a solo planner</h3>
+        <p>Made for households where more than one person has a say in dinner — everyone votes, not just whoever's cooking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 6g. USE CASES                                                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="usecases" id="who">
+  <div class="section-inner">
+    <div class="section-tag">Who it's for</div>
+    <h2 class="section-h2">Made for every kind of household.</h2>
+    <p class="section-lede">FamilyMeals uses neutral "household" and "member" language, so it fits however you share a kitchen.</p>
+    <div class="uc-grid">
+      <div class="uc-card">
+        <div class="uc-emoji">👨‍👩‍👧‍👦</div>
+        <h3>Families</h3>
+        <p>Plan the week's dinners, let kids and teens help choose meals, and make who's-cooking clear.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">💞</div>
+        <h3>Couples</h3>
+        <p>Agree the week's dinners together, skip the last-minute scramble and keep one shared shopping list.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">🏠</div>
+        <h3>Flatmates</h3>
+        <p>Vote on shared meals, assign who's cooking and keep grocery planning in one place.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">⚡</div>
+        <h3>Busy households</h3>
+        <p>Put the weekly plan somewhere everyone can see and cut the repeat "what's for dinner?" conversations.</p>
       </div>
     </div>
   </div>
@@ -845,6 +920,15 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════ -->
+<!-- 8b. SEO PROSE                                                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="seo-prose">
+  <div class="section-inner">
+    <p>FamilyMeals is a family meal planner app for households that want a simpler way to plan weekly dinners. Use it as a weekly dinner planner, shared meal planner and grocery list builder in one — save your favourite meals, vote on dinner ideas, build a seven-day plan and turn it into a shared shopping list. Whether you're planning family dinners, meals for flatmates or a weekly menu as a couple, FamilyMeals makes dinner planning more collaborative and less repetitive.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
 <!-- 9. FOOTER                                                    -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <footer>
@@ -857,6 +941,8 @@
       <h5>Links</h5>
       <ul>
         <li><a href="#how">How it works</a></li>
+        <li><a href="#why">Why FamilyMeals</a></li>
+        <li><a href="#who">Who it's for</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="/support.html">Support</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
