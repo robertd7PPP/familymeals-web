@@ -7,8 +7,6 @@
   <!-- ════════════════════════════════════════════════════════════ -->
   <!-- TODO before launch:                                           -->
   <!--  • Domain: replace www.familymeals.co.nz everywhere once set  -->
-  <!--  • Store links: replace the two "#TODO-store" hrefs + JSON-LD -->
-  <!--    sameAs with the real App Store + Google Play URLs          -->
   <!--  • Pricing: confirm "free to start / optional plan" wording   -->
   <!-- ════════════════════════════════════════════════════════════ -->
 
@@ -38,7 +36,11 @@
         "@id": "https://www.familymeals.co.nz/#organization",
         "name": "FamilyMeals",
         "url": "https://www.familymeals.co.nz/",
-        "logo": "https://www.familymeals.co.nz/app-icon.png"
+        "logo": "https://www.familymeals.co.nz/app-icon.png",
+        "sameAs": [
+          "https://apps.apple.com/app/id6772624896",
+          "https://play.google.com/store/apps/details?id=com.doust.familymeals"
+        ]
       },
       {
         "@type": "WebSite",
@@ -329,10 +331,9 @@
     <h1>Dinner, <em>decided together.</em></h1>
     <p>Everyone votes on the week's dinners, everyone can see whose turn it is to cook, and the shopping list builds itself from the meals you pick. Start from the dinners your household already rotates through — for families, couples and flatmates alike.</p>
     <div class="cta-row">
-      <!-- TODO-store: replace # with real App Store + Google Play URLs -->
       <div class="badge-row">
-        <a href="#" id="store-ios"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
-        <a href="#" id="store-android"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
+        <a href="https://apps.apple.com/app/id6772624896" id="store-ios"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.doust.familymeals" id="store-android"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
       </div>
       <a href="#how" class="btn-secondary-link">See how it works →</a>
     </div>
@@ -691,11 +692,10 @@
   <div class="section-inner">
     <h2>Everyone votes. The week gets planned.</h2>
     <p>The shopping list builds itself. Plan dinners together across your household — and stop asking "what's for dinner?" every night.</p>
-    <!-- TODO-store: replace # with real App Store + Google Play URLs -->
     <div class="cta-row" style="justify-content:center;">
       <div class="badge-row">
-        <a href="#"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
-        <a href="#"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
+        <a href="https://apps.apple.com/app/id6772624896"><img src="/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.doust.familymeals"><img src="/images/google-play-badge.png" alt="Get it on Google Play" height="40"></a>
       </div>
     </div>
     <div class="trust-line" style="margin: 12px auto 0;">No ads. Free to start.</div>
