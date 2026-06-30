@@ -9,7 +9,6 @@
   <!--  • Domain: replace www.familymeals.co.nz everywhere once set  -->
   <!--  • Store links: replace the two "#TODO-store" hrefs + JSON-LD -->
   <!--    sameAs with the real App Store + Google Play URLs          -->
-  <!--  • Screenshots: swap the CSS phone mockups for real images    -->
   <!--  • Pricing: confirm "free to start / optional plan" wording   -->
   <!-- ════════════════════════════════════════════════════════════ -->
 
@@ -104,17 +103,9 @@
 
     :root {
       --navy:        #3574E8;
-      --navy-dark:   #2257B5;
       --navy-light:  #EAF1FE;
-      --amber:       #F5A623;
-      --amber-light: #FEF3C7;
-      --teal:        #2ABFBF;
-      --teal-light:  #C6DDDF;
-      --coral:       #F26B5B;
       --success:     #15803D;
-      --success-bg:  #DCFCE7;
       --bg:          #EEF1F6;   /* light slate page / alt sections */
-      --app-bg:      #C8D2DE;   /* true in-app slate-blue (phone interiors) */
       --card:        #FFFFFF;
       --text:        #1A1F30;
       --text-sec:    #586273;
@@ -169,85 +160,7 @@
       padding: 9px;
       box-shadow: 0 32px 64px rgba(20,32,50,0.22), 0 0 0 1px rgba(0,0,0,0.3);
     }
-    .phone-inner { background: var(--app-bg); border-radius: 33px; overflow: hidden; height: 500px; display: flex; flex-direction: column; }
-    .phone-notch { height: 26px; background: #1A1F30; display: flex; align-items: center; justify-content: center; }
-    .phone-notch-pill { width: 80px; height: 9px; background: #0d0f17; border-radius: 999px; }
-
-    /* ── In-app mockup UI ── */
-    .app-status { display: flex; justify-content: space-between; align-items: center; padding: 6px 16px 0; font-size: 11px; font-weight: 600; color: var(--text); }
-    .app-status-dots { display: flex; gap: 4px; }
-    .app-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 8px; }
-    .app-title { font-size: 16px; font-weight: 700; color: var(--text); }
-    .app-header-ico { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-light); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 12px; font-weight: 700; }
-    .app-body { flex: 1; overflow: hidden; padding: 4px 12px 12px; display: flex; flex-direction: column; text-align: left; }
-
-    /* mini phone (feature sections) */
-    .mini-phone { width: 220px; background: #1A1F30; border-radius: 32px; padding: 8px; box-shadow: 0 20px 40px rgba(20,32,50,0.18), 0 0 0 1px rgba(0,0,0,0.25); margin: 0 auto; }
-    .mini-inner { background: var(--app-bg); border-radius: 26px; overflow: hidden; height: 420px; display: flex; flex-direction: column; }
-    .mini-notch { height: 20px; background: #1A1F30; display: flex; align-items: center; justify-content: center; }
-    .mini-notch-pill { width: 60px; height: 7px; background: #0d0f17; border-radius: 999px; }
-
-    /* ── Plan day cards ── */
-    .day-card { background: white; border-radius: var(--r-md); border-left: 3px solid var(--navy); padding: 9px 11px; margin-bottom: 7px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .day-card.empty { border-left-color: var(--border); }
-    .day-meta { min-width: 0; }
-    .day-when { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
-    .day-meal { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .day-meal.muted { color: var(--text-muted); font-weight: 500; font-style: italic; }
-    .day-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
-    .cook { width: 24px; height: 24px; border-radius: 50%; color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-    /* ── Voting ── */
-    .vote-slot { display: flex; align-items: center; gap: 9px; background: white; border-radius: var(--r-md); padding: 8px 10px; margin-bottom: 6px; box-shadow: var(--shadow); }
-    .rank-badge { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: white; flex-shrink: 0; }
-    .rank-1 { background: var(--amber); }
-    .rank-2 { background: var(--teal); }
-    .rank-3 { background: var(--coral); }
-    .vote-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); }
-    .vote-score { font-size: 11px; font-weight: 700; color: var(--text-sec); font-variant-numeric: tabular-nums; }
-    .vote-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 8px 0 6px; }
-    .pool { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pool-chip { background: var(--navy-light); color: var(--navy); border-radius: var(--r-full); padding: 5px 10px; font-size: 11px; font-weight: 600; }
-    .vote-cta { margin-top: auto; background: var(--amber); color: #2D1F08; border: none; border-radius: var(--r-md); padding: 10px; font-size: 12px; font-weight: 700; text-align: center; }
-
-    /* ── Shopping list ── */
-    .shop-group { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 10px 0 4px; }
-    .shop-group:first-child { margin-top: 0; }
-    .shop-item { display: flex; align-items: center; gap: 9px; padding: 7px 0; border-bottom: 1px solid var(--border-lt); }
-    .ckbox { width: 17px; height: 17px; border-radius: 5px; border: 1.6px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white; }
-    .ckbox.on { background: var(--navy); border-color: var(--navy); color: white; font-size: 11px; font-weight: 800; }
-    .shop-name { font-size: 12px; font-weight: 500; color: var(--text); }
-    .shop-item.done .shop-name { color: var(--text-muted); text-decoration: line-through; }
-
-    /* ── Meals library ── */
-    .meal-card { background: white; border-radius: var(--r-md); padding: 9px 11px; margin-bottom: 7px; box-shadow: var(--shadow); }
-    .meal-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .meal-name { font-size: 13px; font-weight: 600; color: var(--text); }
-    .meal-star { color: var(--amber); font-size: 13px; }
-    .meal-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-    .meal-stat { font-size: 10px; color: var(--text-sec); font-weight: 600; display: inline-flex; align-items: center; gap: 3px; }
-
-    /* ── Roulette ── */
-    .roulette-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 14px; }
-    .wheel-stage { position: relative; width: 168px; height: 168px; }
-    .wheel { width: 168px; height: 168px; border-radius: 50%; box-shadow: 0 6px 18px rgba(20,32,50,0.22), inset 0 0 0 6px rgba(255,255,255,0.85);
-      background: conic-gradient(var(--navy) 0 60deg, var(--amber) 60deg 120deg, var(--teal) 120deg 180deg, var(--coral) 180deg 240deg, #8B5CF6 240deg 300deg, var(--success) 300deg 360deg); }
-    .wheel-hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; border-radius: 50%; background: white; box-shadow: 0 2px 8px rgba(20,32,50,0.25); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--navy); letter-spacing: 0.04em; }
-    .wheel-pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 14px solid var(--text); z-index: 2; }
-    .roulette-result { background: white; border-radius: var(--r-md); padding: 9px 14px; box-shadow: var(--shadow); font-size: 12px; font-weight: 600; color: var(--text); }
-    .roulette-result b { color: var(--navy); }
-    .spin-btn { background: var(--amber); color: #2D1F08; border: none; border-radius: var(--r-full); padding: 9px 26px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
-
-    /* ── Multiple devices (invite + members) ── */
-    .invite-card { background: var(--navy); color: white; border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
-    .invite-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
-    .invite-code { font-family: ui-monospace, monospace; font-size: 19px; font-weight: 800; letter-spacing: 0.14em; margin-top: 4px; }
-    .invite-share { display: inline-block; margin-top: 9px; background: rgba(255,255,255,0.22); border-radius: var(--r-full); padding: 4px 12px; font-size: 11px; font-weight: 700; }
-    .member-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 4px 0 7px; }
-    .member-row { display: flex; align-items: center; gap: 9px; background: white; border-radius: var(--r-md); padding: 8px 10px; margin-bottom: 6px; box-shadow: var(--shadow); }
-    .member-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); }
-    .member-tag { font-size: 10px; font-weight: 700; color: var(--success); background: var(--success-bg); padding: 2px 8px; border-radius: var(--r-full); }
-    .member-tag.shared { color: var(--navy); background: var(--navy-light); }
+    .phone-photo { display: block; width: 100%; border-radius: 33px; }
 
     /* ── Section common ── */
     section { border-top: 1px solid var(--border-lt); }
@@ -367,7 +280,6 @@
       .trust-line { margin: 0 0 8px; max-width: none; }
       .hero-phones { flex-direction: row; gap: 20px; align-items: flex-start; margin-top: 0; }
       .phone { flex-shrink: 0; }
-      .phone-inner { height: 480px; }
 
       .section-inner { padding: 72px 32px; }
       .section-h2 { font-size: 34px; margin-bottom: 24px; }
@@ -384,9 +296,6 @@
       .feature-text h2 { font-size: 28px; }
       .feature-text p { font-size: 16px; }
       .feature-text ul li { font-size: 15px; }
-
-      .mini-phone { width: 240px; }
-      .mini-inner { height: 460px; }
 
       .footer-cta h2 { font-size: 36px; }
     }
@@ -433,63 +342,12 @@
   <div class="hero-phones">
     <!-- Phone 1: Weekly Plan ─────────────────────────────────────── -->
     <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-        <div class="app-status"><span>9:41</span><div class="app-status-dots"><span>📶</span><span>🔋</span></div></div>
-        <div class="app-header">
-          <span class="app-title">Meal Plan</span>
-          <span class="app-header-ico">＋</span>
-        </div>
-        <div class="app-body">
-          <div class="day-card">
-            <div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div>
-            <div class="day-right"><span class="cook" style="background:#3574E8">A</span></div>
-          </div>
-          <div class="day-card">
-            <div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div>
-            <div class="day-right"><span class="cook" style="background:#F26B5B">K</span></div>
-          </div>
-          <div class="day-card">
-            <div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div>
-            <div class="day-right"><span class="cook" style="background:#2ABFBF">B</span></div>
-          </div>
-          <div class="day-card empty">
-            <div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal muted">No meal planned</div></div>
-            <div class="day-right"><span class="cook" style="background:#D7DEE7;color:#8A93A4">?</span></div>
-          </div>
-          <div class="day-card">
-            <div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div>
-            <div class="day-right"><span class="cook" style="background:#F5A623">J</span></div>
-          </div>
-        </div>
-      </div>
+      <img class="phone-photo" src="screenshots/weekly-plan.png" alt="FamilyMeals weekly dinner plan — each night's meal and who's cooking" />
     </div>
 
     <!-- Phone 2: Voting ──────────────────────────────────────────── -->
     <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-        <div class="app-status"><span>9:41</span><div class="app-status-dots"><span>📶</span><span>🔋</span></div></div>
-        <div class="app-header">
-          <span class="app-title">Voting</span>
-          <span class="app-header-ico">●</span>
-        </div>
-        <div class="app-body">
-          <div class="vote-label">Live standings</div>
-          <div class="vote-slot"><span class="rank-badge rank-1">1</span><span class="vote-name">Homemade Pizza</span><span class="vote-score">8 pts</span></div>
-          <div class="vote-slot"><span class="rank-badge rank-2">2</span><span class="vote-name">Chicken Stir-fry</span><span class="vote-score">6 pts</span></div>
-          <div class="vote-slot"><span class="rank-badge rank-3">3</span><span class="vote-name">Fish Tacos</span><span class="vote-score">4 pts</span></div>
-          <div class="vote-label">In the running</div>
-          <div class="pool">
-            <span class="pool-chip">Butter Chicken</span>
-            <span class="pool-chip">Nachos</span>
-            <span class="pool-chip">Lasagne</span>
-            <span class="pool-chip">Pad Thai</span>
-            <span class="pool-chip">Roast Veg</span>
-          </div>
-          <div class="vote-cta">Lock &amp; assign meals</div>
-        </div>
-      </div>
+      <img class="phone-photo" src="screenshots/voting.png" alt="FamilyMeals voting screen — household members rank meals and live standings update" />
     </div>
   </div>
 </div>
@@ -599,23 +457,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Household</span><span class="app-header-ico">⤴</span></div>
-            <div class="app-body">
-              <div class="invite-card">
-                <div class="invite-label">Invite code</div>
-                <div class="invite-code">7K4P-2QXM</div>
-                <span class="invite-share">Share code ↗</span>
-              </div>
-              <div class="member-label">Members</div>
-              <div class="member-row"><span class="cook" style="background:#3574E8">A</span><span class="member-name">Alex</span><span class="member-tag">Joined</span></div>
-              <div class="member-row"><span class="cook" style="background:#F26B5B">K</span><span class="member-name">Kai</span><span class="member-tag">Joined</span></div>
-              <div class="member-row"><span class="cook" style="background:#2ABFBF">B</span><span class="member-name">Bron</span><span class="member-tag">Joined</span></div>
-              <div class="member-row"><span class="cook" style="background:#F5A623">J</span><span class="member-name">Jamie</span><span class="member-tag shared">Tablet</span></div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/household-invite.png" alt="FamilyMeals household settings — invite code and members, each on their own device" />
         </div>
       </div>
     </div>
@@ -639,18 +482,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Meal Plan</span><span class="app-header-ico">＋</span></div>
-            <div class="app-body">
-              <div class="day-card"><div class="day-meta"><div class="day-when">Mon 30 Jun</div><div class="day-meal">Spaghetti Bolognese</div></div><div class="day-right"><span class="cook" style="background:#3574E8">A</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Tue 1 Jul</div><div class="day-meal">Chicken Stir-fry</div></div><div class="day-right"><span class="cook" style="background:#F26B5B">K</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Wed 2 Jul</div><div class="day-meal">Fish Tacos</div></div><div class="day-right"><span class="cook" style="background:#2ABFBF">B</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Thu 3 Jul</div><div class="day-meal">Butter Chicken</div></div><div class="day-right"><span class="cook" style="background:#8B5CF6">M</span></div></div>
-              <div class="day-card"><div class="day-meta"><div class="day-when">Fri 4 Jul</div><div class="day-meal">Homemade Pizza</div></div><div class="day-right"><span class="cook" style="background:#F5A623">J</span></div></div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/weekly-plan.png" alt="FamilyMeals weekly plan — seven days of dinners with who's cooking each night" />
         </div>
       </div>
     </div>
@@ -674,20 +507,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Voting</span><span class="app-header-ico">●</span></div>
-            <div class="app-body">
-              <div class="vote-label">Live standings</div>
-              <div class="vote-slot"><span class="rank-badge rank-1">1</span><span class="vote-name">Homemade Pizza</span><span class="vote-score">8 pts</span></div>
-              <div class="vote-slot"><span class="rank-badge rank-2">2</span><span class="vote-name">Chicken Stir-fry</span><span class="vote-score">6 pts</span></div>
-              <div class="vote-slot"><span class="rank-badge rank-3">3</span><span class="vote-name">Fish Tacos</span><span class="vote-score">4 pts</span></div>
-              <div class="vote-label">In the running</div>
-              <div class="pool"><span class="pool-chip">Butter Chicken</span><span class="pool-chip">Nachos</span><span class="pool-chip">Lasagne</span><span class="pool-chip">Pad Thai</span></div>
-              <div class="vote-cta">Lock &amp; assign meals</div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/voting.png" alt="FamilyMeals voting — each member ranks their top meals and live standings update" />
         </div>
       </div>
     </div>
@@ -711,23 +532,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Shopping</span><span class="app-header-ico">⤴</span></div>
-            <div class="app-body">
-              <div class="shop-group">Produce</div>
-              <div class="shop-item done"><span class="ckbox on">✓</span><span class="shop-name">Tomatoes</span></div>
-              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Onions</span></div>
-              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Capsicum</span></div>
-              <div class="shop-group">Meat</div>
-              <div class="shop-item done"><span class="ckbox on">✓</span><span class="shop-name">Beef mince</span></div>
-              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Chicken thighs</span></div>
-              <div class="shop-group">Pantry</div>
-              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Spaghetti</span></div>
-              <div class="shop-item"><span class="ckbox"></span><span class="shop-name">Tortillas</span></div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/shopping-list.png" alt="FamilyMeals shopping list — ingredients from planned meals, grouped by aisle and tickable" />
         </div>
       </div>
     </div>
@@ -751,17 +557,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Meals</span><span class="app-header-ico">＋</span></div>
-            <div class="app-body">
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Homemade Pizza</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="meal-stat">⭐ 8 pts</span><span class="meal-stat">🍽 eaten 6×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Spaghetti Bolognese</span><span class="meal-star">★</span></div><div class="meal-meta"><span class="meal-stat">⭐ 7 pts</span><span class="meal-stat">🍽 eaten 9×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Chicken Stir-fry</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="meal-stat">⭐ 6 pts</span><span class="meal-stat">🍽 eaten 4×</span></div></div>
-              <div class="meal-card"><div class="meal-top"><span class="meal-name">Fish Tacos</span><span style="color:#C1CAD7;font-size:13px">☆</span></div><div class="meal-meta"><span class="meal-stat">⭐ 4 pts</span><span class="meal-stat">🍽 eaten 3×</span></div></div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/meals-library.png" alt="FamilyMeals meals library — your household's regular dinners with vote scores and times eaten" />
         </div>
       </div>
     </div>
@@ -785,22 +582,8 @@
         </ul>
       </div>
       <div class="feature-visual">
-        <div class="mini-phone">
-          <div class="mini-inner">
-            <div class="mini-notch"><div class="mini-notch-pill"></div></div>
-            <div class="app-header"><span class="app-title">Roulette</span><span class="app-header-ico">↻</span></div>
-            <div class="app-body">
-              <div class="roulette-wrap">
-                <div class="wheel-stage">
-                  <div class="wheel-pointer"></div>
-                  <div class="wheel"></div>
-                  <div class="wheel-hub">SPIN</div>
-                </div>
-                <div class="roulette-result">Tonight: <b>Burgers 🍔</b></div>
-                <button class="spin-btn">Spin</button>
-              </div>
-            </div>
-          </div>
+        <div class="phone">
+          <img class="phone-photo" src="screenshots/roulette.png" alt="FamilyMeals roulette — spin to settle takeaway or undecided nights" />
         </div>
       </div>
     </div>
